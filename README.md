@@ -7,6 +7,7 @@ Task CRUD
 - Get a task by ID (GET /tasks/{id})
 - Update a task (PUT /tasks/{id})
 - Delete a task (DELETE /tasks/{id})
+- Patch a task (PATCH /{id}/complete)
 
 JWT Authentication
 - All endpoints are secured with JWT tokens.
@@ -63,6 +64,7 @@ Swagger UI available at http://localhost:8082/swagger-ui/index.html
 - Update Task: PUT /tasks/{id} → 200 OK
 - Delete Task: DELETE /tasks/{id} → 204 No Content
 - Get Tasks List: GET /tasks?page=0&size=10 → 200 OK
+- Change status task to complete: PATCH /{id}/complete
 
 All requests require JWT Authorization header:
 ```

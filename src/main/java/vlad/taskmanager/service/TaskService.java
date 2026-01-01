@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vlad.taskmanager.app.Task;
+import vlad.taskmanager.app.TaskStatus;
 import vlad.taskmanager.dto.TaskMapper;
 import vlad.taskmanager.dto.TaskRequestDto;
 import vlad.taskmanager.dto.TaskResponseDto;
@@ -42,7 +43,6 @@ public class TaskService {
 
         task.setTitle(dto.getTitle());
         task.setDescription(dto.getDescription());
-        if(dto.getStatus() != null) task.setStatus(dto.getStatus());
 
         return TaskMapper.toDto(taskRepository.save(task));
     }
@@ -51,5 +51,12 @@ public class TaskService {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
         taskRepository.delete(task);
+    }
+
+    public void complete(Long id){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id));
+        task.setStatus(TaskStatus.DONE);
+        taskRepository.save(task);
     }
 }

@@ -69,4 +69,10 @@ public class TaskController {
     public void deleteTask(@PathVariable Long id){
         taskService.delete(id);
     }
+
+    @PatchMapping("/{id}/complete")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void completeTask(@PathVariable Long id){
+        taskService.complete(id);
+    }
 }

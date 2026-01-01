@@ -1,7 +1,5 @@
 package vlad.taskmanager.exception;
 
-import java.util.UUID;
-
 public class TaskNotFoundException extends RuntimeException{
 
     public TaskNotFoundException(Long id){
